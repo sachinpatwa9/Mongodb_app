@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MongoDB Data Submission</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="glass-card">
+      <div class="header">
+        <h1>Submit Data</h1>
+        <p>Enter details below to insert a new document into MongoDB Atlas</p>
+      </div>
+
+      {% if error %}
+      <div class="alert alert-error">
+        <span class="alert-icon">⚠️</span>
+        <div>
+          <strong>Submission Error:</strong> {{ error }}
+        </div>
+      </div>
+      {% endif %}
+
+      <form action="{{ url_for('submit') }}" method="POST" id="submission-form">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" class="form-control" placeholder="Jane Doe" value="{{ form_data.get('name', '') if form_data else '' }}" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" class="form-control" placeholder="jane@example.com" value="{{ form_data.get('email', '') if form_data else '' }}" required>
+        </div>
+
+        <div class="form-group">
+          <label for="category">Category</label>
+          <input type="text" id="category" name="category" class="form-control" placeholder="Feedback / Inquiry" value="{{ form_data.get('category', '') if form_data else '' }}">
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message / Details</label>
+          <textarea id="message" name="message" class="form-control" placeholder="Enter details..." required>{{ form_data.get('message', '') if form_data else '' }}</textarea>
+        </div>
+
+        <button type="submit" class="btn" id="submit-btn">
+          <span>Submit to MongoDB</span>
+        </button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

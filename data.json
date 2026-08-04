@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "name": "Item One",
+    "description": "This is the first sample item."
+  },
+  {
+    "id": 2,
+    "name": "Item Two",
+    "description": "This is the second sample item."
+  },
+  {
+    "id": 3,
+    "name": "Item Three",
+    "description": "This is the third sample item."
+  }
+]
